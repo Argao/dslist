@@ -1,6 +1,8 @@
 package com.argaodev.dslist.dto;
 
 import com.argaodev.dslist.entities.Game;
+import com.argaodev.dslist.projections.GameMinProjection;
+import org.springframework.beans.BeanUtils;
 
 public class GameMinDTO {
     private Long id;
@@ -18,6 +20,10 @@ public class GameMinDTO {
         this.year = entity.getYear();
         this.imgUrl = entity.getImgUrl();
         this.shortDescription = entity.getShortDescription();
+    }
+
+    public GameMinDTO(GameMinProjection projection){
+        BeanUtils.copyProperties(projection,this);
     }
 
     public Long getId() {
